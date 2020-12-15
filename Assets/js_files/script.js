@@ -15,7 +15,7 @@ var show_time = document.querySelector(".timer");
 //         ["answr 1", true], ["answr 2", false], ["answr 3", false], ["answr 4", false]],
 
 // ]
-        //toggling array for now: will make site work with single question first
+//toggling array for now: will make site work with single question first
 
 //In question box, show questions[Q Index][0]
 //In possible answers, show quesions[Same index][1-4][0] use for loop!
@@ -28,7 +28,7 @@ var show_time = document.querySelector(".timer");
 //----------------------------------------------------------------------------------
 
 
-    
+
 // declare functions logically (chronological)! Will help visualize
 
 
@@ -47,12 +47,16 @@ var show_time = document.querySelector(".timer");
 
 //------------------------------------------------------------------
 
-function start_page(){
-    
 
-    var placeholder=0;
-    placeholder++;
-}
+var introEl = document.querySelector(".intro_page");
+var start_bttnEl = document.querySelector(".start_bttn");
+
+start_bttnEl.addEventListener("click", function (event) {
+    event.preventDefault();
+    introEl.style.display="none";
+    time_start();
+});
+
 
 function time_start() {
     time_remaining = 76;        //bc first action in interval is --, fisrt number shown is 75, and properly shows 1 instead of cutting off
@@ -70,15 +74,14 @@ function timer() {
     }, 1000)
 }
 
-function question_changer(){
-    var placeholder=0;
+function question_changer() {
+    var placeholder = 0;
     placeholder++;
 }
 
-function answr_eval(){
-    var placeholder=0;
+function answr_eval() {
+    var placeholder = 0;
     placeholder++;
 }
 
 
-time_start();
