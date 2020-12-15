@@ -1,7 +1,11 @@
-var time_remaining = 0;
+var time_remaining = 75;
 var show_time = document.querySelector(".timer");
 var current_question = 0;
 
+var introEl = document.querySelector(".intro_page");
+var start_bttnEl = document.querySelector(".start_bttn");
+var questionEl = document.querySelector(".questions");
+var hi_scoreEl = document.querySelector(".hi_score_input")
 
 //still need loads of vars!  Probs need vars of divs to toggle displays
 
@@ -28,10 +32,6 @@ var q_array = [
 //------------------------------------------------------------------
 
 
-var introEl = document.querySelector(".intro_page");
-var start_bttnEl = document.querySelector(".start_bttn");
-var questionEl = document.querySelector(".questions");
-
 function time_start() {
     time_remaining = 76;        //bc first action in interval is --, fisrt number shown is 75, and properly shows 1 instead of cutting off
     timer();
@@ -39,10 +39,13 @@ function time_start() {
 
 function timer() {
     var time_left = setInterval(function () {
+        if(hi_scoreEl.style.display==="block"){
+            clearInterval(time_left);
+        }
         time_remaining--;
         show_time.textContent = "Timer: " + time_remaining;
         if (time_remaining <= 0) {
-            show_time.textContent = "Timer:__ ";
+            show_time.textContent = "Timer: 75 ";
             clearInterval(time_left);
         }
     }, 1000)
@@ -70,11 +73,6 @@ function question_changer() {
 
     })
 
-    //    Add value to button equal to foo
-    //    Add onclick function to button
-    //    tempButton.onclick = validateAnswer;
-
-
 }
 
 
@@ -88,6 +86,8 @@ start_bttnEl.addEventListener("click", function (event) {
 });
 
 
+
+//evals if choice is correct, then either changes to next question or to hs
 questionEl.addEventListener("click", function (event) {
     event.preventDefault();
 
@@ -97,16 +97,21 @@ questionEl.addEventListener("click", function (event) {
     if (choice_eval === (q_array[current_question].correct)) {
         alert("yay!");
         current_question++;
-        question_changer();
 
     } else {
         // var wrngEl = document.createElement("div");
         // wrngEl.textContent = "Incorrect";       //setTimeout, say it for a while
-alert ("nay!");
+        alert("nay!");
         time_remaining -= 15;
         current_question++;
-        question_changer();
+
     }
 
+    if (current_question < q_array.length) {
+        question_changer();
+    } else {
+        questionEl.style.display = "none";
+        hi_scoreEl.style.display = "block";
+    }
 
 });
