@@ -55,9 +55,9 @@ function timer() {
             time_remaining = 75;
             show_time.textContent = "Timer: " + time_remaining;       //wanna put high 
 
-            hi_score_record();
             questionEl.style.display = "none";          //changes to hi-score screen
             hi_scoreEl.style.display = "block";         //as soon as timer hits 0
+            hi_score_record();
 
             clearInterval(time_left);
         }
@@ -91,10 +91,13 @@ function question_changer() {
 
 function hi_score_record() {
     var pEl = document.createElement("p");
+    var inputEl = document.createElement("input");
     // var input_line       figure way for text content
 
     pEl.textContent = "Your final score is " + final_score;
     hi_scoreEl.appendChild(pEl);
+    hi_scoreEl.appendChild(inputEl);
+
 }
 
 
