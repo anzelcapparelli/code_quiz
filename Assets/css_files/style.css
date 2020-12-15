@@ -33,9 +33,13 @@
 }
 
 .questions{
-    display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
     text-align: left;
 }
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+  }

@@ -92,19 +92,23 @@ function timer() {
 function question_changer() {
 
     //    create question box
-    questionEl.createElement
     //    add question to box
+
     questionEl.textContent = dummy_array[0].q_text;
 
     dummy_array[0].choices.forEach(function (item,index) {
 
         //    Create element button
-        var qEl = document.createElement("button");
-        
-        questionEl.appendChild(qEl);
         //    Append tempButton to button-zone
+        
+        var brkEl = document.createElement("p");
+        questionEl.appendChild(brkEl);
 
+        var qEl = document.createElement("button");
+        brkEl.appendChild(qEl);
         qEl.textContent = item;
+
+
 
 
 
