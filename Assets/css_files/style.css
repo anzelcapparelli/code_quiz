@@ -9,7 +9,7 @@
     top:0px;
     left:0px;
 }
-.timer{
+.timer, #sec_left{
     color: purple;
     position: fixed;
     top:0px;
@@ -17,21 +17,25 @@
     
 }
 
-#sec_left{
-    color: purple;
-    position: fixed;
-    top:0px;
-    right:0px;
-
-}
-
-.introEl{
-
-    margin: 50px;
+.intro_page, .questions{
+    margin: auto;
+    
 }
 
 .start_bttn{
     background-color: rgb(158, 97, 158);
     color: white;
     border-radius: 6px;
+}
+
+.intro_page{
+    text-align: center;
+}
+
+.questions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    text-align: left;
 }
