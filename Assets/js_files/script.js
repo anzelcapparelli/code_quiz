@@ -1,4 +1,4 @@
-var time_remaining = 75;
+var time_remaining = 5;
 var current_question = 0;
 var final_score;
 
@@ -20,7 +20,13 @@ var q_array = [
         q_text: "This will be the question prompt 2",
         choices: ["choice 5", "choice 6", "choice 7", "choice 8"],
         correct: "choice 6"
+    },
+    {
+        q_text: "This will be the question prompt 2",
+        choices: ["choice 5", "choice 6", "choice 7", "choice 8"],
+        correct: "choice 6"
     }
+
 ]
 
 //----------------------------------------------------------------------------------
@@ -34,7 +40,6 @@ var q_array = [
 
 
 function time_start() {
-    time_remaining = 76;        //bc first action in interval is --, fisrt number shown is 75, and properly shows 1 instead of cutting off
     timer();
 }
 
@@ -46,8 +51,14 @@ function timer() {
         time_remaining--;
         show_time.textContent = "Timer: " + time_remaining;
         if (time_remaining <= 0) {
-            final_score = time_remaining;
-            show_time.textContent = "Timer: 75 ";       //wanna put high 
+            final_score = time_remaining;               //intentionally allowing to get negative scores! (it's funny)
+            time_remaining = 75;
+            show_time.textContent = "Timer: " + time_remaining;       //wanna put high 
+
+            hi_score_record();
+            questionEl.style.display = "none";          //changes to hi-score screen
+            hi_scoreEl.style.display = "block";         //as soon as timer hits 0
+
             clearInterval(time_left);
         }
     }, 1000)
@@ -78,6 +89,13 @@ function question_changer() {
 }
 
 
+function hi_score_record() {
+    var pEl = document.createElement("p");
+    // var input_line       figure way for text content
+
+    pEl.textContent = "Your final score is " + final_score;
+    hi_scoreEl.appendChild(pEl);
+}
 
 
 
@@ -117,12 +135,6 @@ questionEl.addEventListener("click", function (event) {
 
     }
 
-    if (current_question < q_array.length) {
-        question_changer();
-    } else {
-        final_score = time_remaining;
-        questionEl.style.display = "none";
-        hi_scoreEl.style.display = "block";
-    }
+    question_changer();
 
 });
