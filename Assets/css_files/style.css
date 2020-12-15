@@ -1,0 +1,26 @@
+/* body{
+    background-color: red;
+} */
+
+
+.hs_link{
+    color: purple;
+    position: fixed;
+    top:0px;
+    left:0px;
+}
+.timer{
+    color: purple;
+    position: fixed;
+    top:0px;
+    right: 0px;
+    
+}
+
+#sec_left{
+    color: purple;
+    position: fixed;
+    top:0px;
+    right:0px;
+
+}
