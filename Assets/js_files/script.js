@@ -28,12 +28,12 @@ var show_time = document.querySelector(".timer");
 var dummy_array = [
     {
         q_text: "This will be the question prompt 1",
-        choices: ["choice 1","choice 2","choice 3","choice 4"],
+        choices: ["choice 1", "choice 2", "choice 3", "choice 4"],
         correct: "choice 1"
     },
     {
         q_text: "This will be the question prompt 2",
-        choices: ["choice 1","choice 2","choice 3","choice 4"],
+        choices: ["choice 1", "choice 2", "choice 3", "choice 4"],
         correct: "choice 2"
     }
 ]
@@ -94,16 +94,27 @@ function question_changer() {
     //    create question box
     questionEl.createElement
     //    add question to box
-questionEl.textContent=dummy_array[0].q_text;
-    //    Create element button
+    questionEl.textContent = dummy_array[0].q_text;
 
+    dummy_array[0].choices.forEach(function (item,index) {
+
+        //    Create element button
+        var qEl = document.createElement("button");
+        
+        questionEl.appendChild(qEl);
+        //    Append tempButton to button-zone
+
+        qEl.textContent = item;
+
+
+
+    })
     //    Add text to button
 
     //    Add class to button
     //    Add value to button equal to foo
     //    Add onclick function to butotn
     //    tempButton.onclick = validateAnswer;
-    //    Append tempButton to button-zone
 
 
 }
