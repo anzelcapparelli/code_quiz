@@ -1,19 +1,21 @@
 var time_remaining = 0;
 var show_time = document.querySelector(".timer");
-var questions = [
-    ["Q1 This is where the question will go",
-        ["answr 1", true], ["answr 2", false], ["answr 3", false], ["answr 4", false]],
-    ["Q2 This is where the question will go",
-        ["answr 1", true], ["answr 2", false], ["answr 3", false], ["answr 4", false]],
-    ["Q3 This is where the question will go",
-        ["answr 1", true], ["answr 2", false], ["answr 3", false], ["answr 4", false]],
-    ["Q4 This is where the question will go",
-        ["answr 1", true], ["answr 2", false], ["answr 3", false], ["answr 4", false]],
-    ["Q5 This is where the question will go",
-        ["answr 1", true], ["answr 2", false], ["answr 3", false], ["answr 4", false]],
 
-]
 
+// var questions = [
+//     ["Q1 This is where the question will go",
+//         ["answr 1", true], ["answr 2", false], ["answr 3", false], ["answr 4", false]],
+//     ["Q2 This is where the question will go",
+//         ["answr 1", true], ["answr 2", false], ["answr 3", false], ["answr 4", false]],
+//     ["Q3 This is where the question will go",
+//         ["answr 1", true], ["answr 2", false], ["answr 3", false], ["answr 4", false]],
+//     ["Q4 This is where the question will go",
+//         ["answr 1", true], ["answr 2", false], ["answr 3", false], ["answr 4", false]],
+//     ["Q5 This is where the question will go",
+//         ["answr 1", true], ["answr 2", false], ["answr 3", false], ["answr 4", false]],
+
+// ]
+        //toggling array for now: will make site work with single question first
 
 //In question box, show questions[Q Index][0]
 //In possible answers, show quesions[Same index][1-4][0] use for loop!
@@ -46,6 +48,8 @@ var questions = [
 //------------------------------------------------------------------
 
 function start_page(){
+    
+
     var placeholder=0;
     placeholder++;
 }

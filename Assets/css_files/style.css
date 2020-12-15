@@ -24,3 +24,14 @@
     right:0px;
 
 }
+
+.introEl{
+
+    margin: 50px;
+}
+
+.start_bttn{
+    background-color: rgb(158, 97, 158);
+    color: white;
+    border-radius: 6px;
+}
