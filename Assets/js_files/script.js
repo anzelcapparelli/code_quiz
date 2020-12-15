@@ -25,6 +25,19 @@ var show_time = document.querySelector(".timer");
 
 //still need loads of vars!  Probs need vars of divs to toggle displays
 
+var dummy_array = [
+    {
+        q_text: "This will be the question prompt 1",
+        choices: ["choice 1","choice 2","choice 3","choice 4"]
+        correct: "choice 1"
+    },
+    {
+        q_text: "This will be the question prompt 1",
+
+        correct: "choice 1"
+    }
+]
+
 //----------------------------------------------------------------------------------
 
 
@@ -50,11 +63,13 @@ var show_time = document.querySelector(".timer");
 
 var introEl = document.querySelector(".intro_page");
 var start_bttnEl = document.querySelector(".start_bttn");
+var questionEl = document.querySelector(".questions");
 
 start_bttnEl.addEventListener("click", function (event) {
     event.preventDefault();
-    introEl.style.display="none";
+    introEl.style.display = "none";
     time_start();
+    question_changer();
 });
 
 
@@ -75,8 +90,23 @@ function timer() {
 }
 
 function question_changer() {
-    var placeholder = 0;
-    placeholder++;
+
+    //    create question box
+    questionEl.createElement
+    //    add question to box
+
+    //    Create element button
+
+    //    Add text to button
+
+    //    Add class to button
+    //    Add value to button equal to foo
+    //    Add onclick function to butotn
+    //    tempButton.onclick = validateAnswer;
+    //    Append tempButton to button-zone
+
+    alert("hi");
+
 }
 
 function answr_eval() {
