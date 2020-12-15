@@ -1,7 +1,8 @@
 var time_remaining = 75;
-var show_time = document.querySelector(".timer");
 var current_question = 0;
+var final_score;
 
+var show_time = document.querySelector(".timer");
 var introEl = document.querySelector(".intro_page");
 var start_bttnEl = document.querySelector(".start_bttn");
 var questionEl = document.querySelector(".questions");
@@ -17,8 +18,8 @@ var q_array = [
     },
     {
         q_text: "This will be the question prompt 2",
-        choices: ["choice 1", "choice 2", "choice 3", "choice 4"],
-        correct: "choice 2"
+        choices: ["choice 5", "choice 6", "choice 7", "choice 8"],
+        correct: "choice 6"
     }
 ]
 
@@ -39,13 +40,14 @@ function time_start() {
 
 function timer() {
     var time_left = setInterval(function () {
-        if(hi_scoreEl.style.display==="block"){
+        if (hi_scoreEl.style.display === "block") {
             clearInterval(time_left);
         }
         time_remaining--;
         show_time.textContent = "Timer: " + time_remaining;
         if (time_remaining <= 0) {
-            show_time.textContent = "Timer: 75 ";
+            final_score = time_remaining;
+            show_time.textContent = "Timer: 75 ";       //wanna put high 
             clearInterval(time_left);
         }
     }, 1000)
@@ -78,6 +80,9 @@ function question_changer() {
 
 
 
+
+
+
 start_bttnEl.addEventListener("click", function (event) {
     event.preventDefault();
     introEl.style.display = "none";
@@ -93,6 +98,11 @@ questionEl.addEventListener("click", function (event) {
 
     var choice_eval = event.target.value;
     console.log(choice_eval);
+
+    if (q_array[current_question].choices.indexOf(event.target.value) === -1) {
+        return "";
+    }
+    //makes sure only button presses are read
 
     if (choice_eval === (q_array[current_question].correct)) {
         alert("yay!");
@@ -110,6 +120,7 @@ questionEl.addEventListener("click", function (event) {
     if (current_question < q_array.length) {
         question_changer();
     } else {
+        final_score = time_remaining;
         questionEl.style.display = "none";
         hi_scoreEl.style.display = "block";
     }
