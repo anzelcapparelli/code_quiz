@@ -5,7 +5,7 @@ var current_question = 0;
 
 //still need loads of vars!  Probs need vars of divs to toggle displays
 
-var dummy_array = [
+var q_array = [
     {
         q_text: "This will be the question prompt 1",
         choices: ["choice 1", "choice 2", "choice 3", "choice 4"],
@@ -24,19 +24,6 @@ var dummy_array = [
 
 // declare functions logically (chronological)! Will help visualize
 
-
-
-//------------------------------------------------------------------
-//Personalize to my project
-
-// function display_toggler(x) {
-//     var x = document.getElementById("myDIV");
-//     if (x.style.display === "none") {
-//       x.style.display = "block";
-//     } else {
-//       x.style.display = "none";
-//     }
-//   }
 
 //------------------------------------------------------------------
 
@@ -66,9 +53,9 @@ function question_changer() {
     //    create question box
     //    add question to box
 
-    questionEl.textContent = dummy_array[current_question].q_text;
+    questionEl.textContent = q_array[current_question].q_text;
 
-    dummy_array[current_question].choices.forEach(function (item, index) {
+    q_array[current_question].choices.forEach(function (item, index) {
 
         //    Create element button
         //    Append tempButton to button-zone
@@ -79,20 +66,17 @@ function question_changer() {
         var qEl = document.createElement("button");
         brkEl.appendChild(qEl);
         qEl.textContent = item;
+        qEl.setAttribute("value", item);
 
     })
 
     //    Add value to button equal to foo
-    //    Add onclick function to butotn
+    //    Add onclick function to button
     //    tempButton.onclick = validateAnswer;
 
 
 }
 
-function answr_eval() {    //matches user choice against correct
-    var placeholder = 0;    //if wrong, subtract 15
-    placeholder++;          //call question changer, progress index
-}
 
 
 
@@ -106,12 +90,21 @@ start_bttnEl.addEventListener("click", function (event) {
 
 questionEl.addEventListener("click", function (event) {
     event.preventDefault();
-    if (event.target === (dummy_array[0].correct)) {
+
+    var choice_eval = event.target.value;
+    console.log(choice_eval);
+
+    if (choice_eval === (q_array[current_question].correct)) {
+        alert("yay!");
+        current_question++;
         question_changer();
+
     } else {
-        var wrngEl = document.createElement("div");
-        wrngEl.textContent = "Incorrect";
+        // var wrngEl = document.createElement("div");
+        // wrngEl.textContent = "Incorrect";       //setTimeout, say it for a while
+alert ("nay!");
         time_remaining -= 15;
+        current_question++;
         question_changer();
     }
 
