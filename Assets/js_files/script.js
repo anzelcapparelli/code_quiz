@@ -91,16 +91,35 @@ function question_changer() {
 
 function hi_score_record() {
     var pEl = document.createElement("p");
+    var pEl2 = document.createElement("p");
     var inputEl = document.createElement("input");
-    // var input_line       figure way for text content
+    var divEl = document.createElement("div");
+    var submit = document.createElement("button");
+    submit.setAttribute("class", "submit_btn");
+
+    // var user_input  need to store! probs want to make global   
 
     pEl.textContent = "Your final score is " + final_score;
     hi_scoreEl.appendChild(pEl);
-    hi_scoreEl.appendChild(inputEl);
 
+    hi_scoreEl.appendChild(divEl);
+    divEl.setAttribute("class", "score_div");
+
+    divEl.appendChild(pEl2);
+    pEl2.textContent = "Enter initials: ";
+
+    divEl.appendChild(inputEl);
+
+    divEl.appendChild(submit);
+    submit.textContent = "Submit";
+
+    querySelector(".submit_btn").addEventListener("click", function var_stor(event){
+
+    })
 }
 
 
+//final score
 
 
 

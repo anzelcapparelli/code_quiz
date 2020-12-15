@@ -50,3 +50,10 @@
     flex-basis: 100%;
     height: 0;
   }
+
+
+.score_div{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

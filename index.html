@@ -5,14 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Assets/css_files/style.css">
 </head>
 
 <body>
     <a class="hs_link" href="#">View Highscores</a>
-    <div class="timer">Timer:__ </div>
+    <div class="timer">Timer: 75 </div>
     <!-- <div class="placeholder">#placholder</div>  trying to get time to show:this is a bust -->
-    <script src="script.js"></script>
+
+    <div class="intro_page" style="display: block;">
+        <h1><strong>Coding Quiz Challenge</strong></h1>
+        <p> Try to answer the following code-related questions within the time limit.
+            <br>
+            Incorrect answers will penalize your score/time by 15 seconds!
+        </p>
+        <button class="start_bttn">Start Quiz</button>
+    </div>
+    <div class="questions" style="display: block;"></div>
+    <!--div is there, but empty w/o JS-->
+
+    <div class="hi_score_input" style="display: none;">
+        <!--contents hidden until toggled-->
+        <h1>All Done!</h1>
+
+    </div>
+
+    <script src="Assets/js_files/script.js"></script>
 </body>
 
 </html>
