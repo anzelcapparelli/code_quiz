@@ -96,12 +96,12 @@ function hi_score_record() {
     var inputEl = document.createElement("input");
     var divEl = document.createElement("div");
     var submit = document.createElement("button");
-    
+
     submit.setAttribute("class", "submit_btn");
     inputEl.setAttribute("class", "user_input");
-    
-    
-    
+
+
+
     // var user_input  need to store! probs want to make global
 
     pEl.textContent = "Your final score is " + final_score;
@@ -122,10 +122,10 @@ function hi_score_record() {
     var submitEl = document.querySelector(".submit_btn");
 
     submitEl.addEventListener("click", function var_stor(event) {
-        alert("hello");
-    //     // event.preventDefault();
-        // user_input = querySelector(".user_input").value;
-        // console.log(user_input);
+
+        event.preventDefault();
+        user_input = document.querySelector(".user_input").value;
+        console.log(user_input);
     })
 }
 
