@@ -1,6 +1,7 @@
 var time_remaining = 5;
 var current_question = 0;
 var final_score;
+var user_input;
 
 var show_time = document.querySelector(".timer");
 var introEl = document.querySelector(".intro_page");
@@ -95,9 +96,13 @@ function hi_score_record() {
     var inputEl = document.createElement("input");
     var divEl = document.createElement("div");
     var submit = document.createElement("button");
+    
     submit.setAttribute("class", "submit_btn");
-
-    // var user_input  need to store! probs want to make global   
+    inputEl.setAttribute("class", "user_input");
+    
+    
+    
+    // var user_input  need to store! probs want to make global
 
     pEl.textContent = "Your final score is " + final_score;
     hi_scoreEl.appendChild(pEl);
@@ -106,20 +111,27 @@ function hi_score_record() {
     divEl.setAttribute("class", "score_div");
 
     divEl.appendChild(pEl2);
-    pEl2.textContent = "Enter initials: ";
+    pEl2.textContent = "Enter initials:";
 
     divEl.appendChild(inputEl);
 
     divEl.appendChild(submit);
     submit.textContent = "Submit";
 
-    querySelector(".submit_btn").addEventListener("click", function var_stor(event){
 
+    var submitEl = document.querySelector(".submit_btn");
+
+    submitEl.addEventListener("click", function var_stor(event) {
+        alert("hello");
+    //     // event.preventDefault();
+        // user_input = querySelector(".user_input").value;
+        // console.log(user_input);
     })
 }
 
 
-//final score
+//final score stored along with initials! figure out through past activities!
+//probs need to make new var for input, then store user and final score as object
 
 
 
