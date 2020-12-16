@@ -2,6 +2,7 @@ var time_remaining = 5;
 var current_question = 0;
 var final_score;
 var user_input;
+var input_array = [];
 
 var show_time = document.querySelector(".timer");
 var introEl = document.querySelector(".intro_page");
@@ -125,9 +126,73 @@ function hi_score_record() {
 
         event.preventDefault();
         user_input = document.querySelector(".user_input").value;
-        console.log(user_input);
+        var user_entry = [user_input, final_score];
+        input_array.push(user_entry);
+        localStorage.setItem("hi_scores", JSON.stringify(input_array));
+        //combine with final score, stringify, then save on local storage!
+        //on next page, need to retrieve (if there), then show
+        //should totally sort via final score if possible!
     })
 }
+
+
+//===========================================================================================
+
+// need to get what prevents submission w/o initials, need reset of value so they cant flood
+//or immediate redirect
+
+if (todoText === "") {
+    return;
+  }
+
+  // Add new todoText to todos array, clear the input
+  todos.push(todoText);
+  todoInput.value = "";
+
+//===========================================================================================
+
+
+function init() {
+    // Get stored todos from localStorage
+    // Parsing the JSON string to an object
+    var storedTodos = JSON.parse(localStorage.getItem("todos"));
+  
+    // If todos were retrieved from localStorage, update the todos array to it
+    if (storedTodos !== null) {
+      todos = storedTodos;
+    }
+  
+    // Render todos to the DOM
+    renderTodos();
+  }
+  
+  function renderTodos() {
+    // Clear todoList element and update todoCountSpan
+    todoList.innerHTML = "";
+    todoCountSpan.textContent = todos.length;
+  
+    // Render a new li for each todo
+    for (var i = 0; i < todos.length; i++) {
+      var todo = todos[i];
+  
+      var li = document.createElement("li");
+      li.textContent = todo;
+      li.setAttribute("data-index", i);
+  
+      var button = document.createElement("button");
+      button.textContent = "Complete";
+  
+      li.appendChild(button);
+      todoList.appendChild(li);
+    }
+  }
+
+
+
+
+
+
+//===========================================================================================
 
 
 //final score stored along with initials! figure out through past activities!
