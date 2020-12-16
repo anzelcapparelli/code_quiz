@@ -14,6 +14,7 @@ var tableEl = document.querySelector(".hi_score_table")
 var listEl = document.querySelector(".hi_score_list")
 var back_bttnEl = document.querySelector(".back_bttn");
 var clear_bttnEl = document.querySelector(".clear_bttn");
+var hs_bttnEl = document.querySelector(".hs_link");
 
 //still need loads of vars!  Probs need vars of divs to toggle displays
 
@@ -233,4 +234,10 @@ clear_bttnEl.addEventListener("click", function (event) {
     event.preventDefault();
     localStorage.clear();
     listEl.innerHTML = "";
+})
+
+hs_bttnEl.addEventListener("click", function (event) {
+    event.preventDefault();
+    introEl.style.display="none";
+    show_scores();
 })
