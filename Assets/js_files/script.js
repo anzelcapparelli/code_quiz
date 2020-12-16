@@ -21,8 +21,8 @@ var hs_bttnEl = document.querySelector(".hs_link");
 var q_array = [
     {
         q_text: "Which of the following is NOT a Javascript variable type?",
-        choices: ["choice 1", "choice 2", "choice 3", "choice 4"],
-        correct: "choice 1"
+        choices: ["number", "string", "object", "double"],
+        correct: "double"
     },
     {
         q_text: "After retrieving an array from local storage, what function must be run on it to convert it to normal format?",
