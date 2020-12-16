@@ -12,5 +12,5 @@ Both setInterval and local storage access were touched upon in this app, for bot
 
 ### Links
 
-[Deployed Website](https://anzelcapparelli.github.io/password_generator/)
-[GitHub Repository](https://github.com/anzelcapparelli/password_generator/)
+[Deployed Website](https://anzelcapparelli.github.io/code_quiz/)
+[GitHub Repository](https://github.com/anzelcapparelli/code_quiz)
