@@ -9,6 +9,10 @@ var introEl = document.querySelector(".intro_page");
 var start_bttnEl = document.querySelector(".start_bttn");
 var questionEl = document.querySelector(".questions");
 var hi_scoreEl = document.querySelector(".hi_score_input")
+var tableEl = document.querySelector(".hi_score_table")
+var listEl = document.querySelector(".hi_score_list")
+var back_bttnEl = document.querySelector(".back_bttn");
+var clear_bttnEl = document.querySelector(".clear_bttn");
 
 //still need loads of vars!  Probs need vars of divs to toggle displays
 
@@ -101,10 +105,7 @@ function hi_score_record() {
     submit.setAttribute("class", "submit_btn");
     inputEl.setAttribute("class", "user_input");
 
-
-
-    // var user_input  need to store! probs want to make global
-
+    
     pEl.textContent = "Your final score is " + final_score;
     hi_scoreEl.appendChild(pEl);
 
@@ -125,78 +126,53 @@ function hi_score_record() {
     submitEl.addEventListener("click", function var_stor(event) {
 
         event.preventDefault();
-        user_input = document.querySelector(".user_input").value;
+        user_input = document.querySelector(".user_input").value.trim();
+        if (user_input === "") {
+            return;
+        }
+
         var user_entry = [user_input, final_score];
+
+        var stored_scores = JSON.parse(localStorage.getItem("hi_scores"));
+        //if there's local storage, input array ==JSON.parse(localStorage.getItem("hi_scores"))
+
+        if (stored_scores !== null) {
+            input_array = stored_scores;
+        }
+
         input_array.push(user_entry);
         localStorage.setItem("hi_scores", JSON.stringify(input_array));
-        //combine with final score, stringify, then save on local storage!
-        //on next page, need to retrieve (if there), then show
-        //should totally sort via final score if possible!
+        show_scores();
+        
+
     })
 }
 
-
-//===========================================================================================
-
-// need to get what prevents submission w/o initials, need reset of value so they cant flood
-//or immediate redirect
-
-if (todoText === "") {
-    return;
-  }
-
-  // Add new todoText to todos array, clear the input
-  todos.push(todoText);
-  todoInput.value = "";
-
-//===========================================================================================
+function show_scores() {
+    hi_scoreEl.innerHTML = "";
+    listEl.innerHTML = "";
+    tableEl.style.display = "block";
+    var score_list = JSON.parse(localStorage.getItem("hi_scores"));
+    var retrieved_array;
 
 
-function init() {
-    // Get stored todos from localStorage
-    // Parsing the JSON string to an object
-    var storedTodos = JSON.parse(localStorage.getItem("todos"));
-  
-    // If todos were retrieved from localStorage, update the todos array to it
-    if (storedTodos !== null) {
-      todos = storedTodos;
+
+    if (score_list !== null) {
+        retrieved_array = score_list;
     }
-  
-    // Render todos to the DOM
-    renderTodos();
-  }
-  
-  function renderTodos() {
-    // Clear todoList element and update todoCountSpan
-    todoList.innerHTML = "";
-    todoCountSpan.textContent = todos.length;
-  
-    // Render a new li for each todo
-    for (var i = 0; i < todos.length; i++) {
-      var todo = todos[i];
-  
-      var li = document.createElement("li");
-      li.textContent = todo;
-      li.setAttribute("data-index", i);
-  
-      var button = document.createElement("button");
-      button.textContent = "Complete";
-  
-      li.appendChild(button);
-      todoList.appendChild(li);
+
+    for (var i = 0; i < retrieved_array.length; i++) {
+        var scoreboard_row = retrieved_array[i];
+        var one_input = scoreboard_row.join("--");
+
+        var liEl = document.createElement("li");
+        listEl.appendChild(liEl);
+        liEl.textContent = one_input;
     }
-  }
 
 
 
-
-
-
-//===========================================================================================
-
-
-//final score stored along with initials! figure out through past activities!
-//probs need to make new var for input, then store user and final score as object
+}
 
 
 
