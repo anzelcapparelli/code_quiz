@@ -1,4 +1,4 @@
-var time_remaining = 5;
+var time_remaining = 75;
 var current_question = 0;
 var final_score;
 var user_input;
@@ -52,29 +52,35 @@ function time_start() {
 
 function timer() {
     var time_left = setInterval(function () {
-        if (hi_scoreEl.style.display === "block") {
-            clearInterval(time_left);
-        }
-        time_remaining--;
-        show_time.textContent = "Timer: " + time_remaining;
-        if (time_remaining <= 0) {
+        if (hi_scoreEl.style.display === "block" || time_remaining <= 0) {
+
             final_score = time_remaining;               //intentionally allowing to get negative scores! (it's funny)
             time_remaining = 75;
             show_time.textContent = "Timer: " + time_remaining;       //wanna put high 
 
             questionEl.style.display = "none";          //changes to hi-score screen
-            hi_scoreEl.style.display = "block";         //as soon as timer hits 0
+                                                     //as soon as timer hits 0
             hi_score_record();
 
             clearInterval(time_left);
         }
+        time_remaining--;
+        show_time.textContent = "Timer: " + time_remaining;
+
     }, 1000)
 }
 
 function question_changer() {
 
+    questionEl.style.display = "block";
     //    create question box
     //    add question to box
+
+    if (current_question >= q_array.length){
+    questionEl.style.display = "none";
+    hi_scoreEl.style.display = "block";
+    return"";
+    }
 
     questionEl.textContent = q_array[current_question].q_text;
 
@@ -138,7 +144,7 @@ function hi_score_record() {
         //if there's local storage, input array ==JSON.parse(localStorage.getItem("hi_scores"))
 
         if (stored_scores > 0) {
-            input_array=JSON.parse(stored_scores);
+            input_array = JSON.parse(stored_scores);
         }
 
         input_array.push(user_entry);
@@ -176,7 +182,7 @@ function show_scores() {
 }
 
 
-
+// this starts off function chain
 start_bttnEl.addEventListener("click", function (event) {
     event.preventDefault();
     introEl.style.display = "none";
@@ -191,7 +197,6 @@ questionEl.addEventListener("click", function (event) {
     event.preventDefault();
 
     var choice_eval = event.target.value;
-    console.log(choice_eval);
 
     if (q_array[current_question].choices.indexOf(event.target.value) === -1) {
         return "";
@@ -219,11 +224,13 @@ questionEl.addEventListener("click", function (event) {
 back_bttnEl.addEventListener("click", function (event) {
     event.preventDefault();
     tableEl.style.display = "none";
+    hi_scoreEl.style.display = "none";
     introEl.style.display = "block";
+    current_question = 0;
 })
 
 clear_bttnEl.addEventListener("click", function (event) {
     event.preventDefault();
     localStorage.clear();
-    show_scores;
+    listEl.innerHTML = "";
 })
