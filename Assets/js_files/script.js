@@ -20,31 +20,36 @@ var hs_bttnEl = document.querySelector(".hs_link");
 
 var q_array = [
     {
-        q_text: "This will be the question prompt 1",
+        q_text: "Which of the following is NOT a Javascript variable type?",
         choices: ["choice 1", "choice 2", "choice 3", "choice 4"],
         correct: "choice 1"
     },
     {
-        q_text: "This will be the question prompt 2",
-        choices: ["choice 5", "choice 6", "choice 7", "choice 8"],
-        correct: "choice 6"
+        q_text: "After retrieving an array from local storage, what function must be run on it to convert it to normal format?",
+        choices: ["Math.floor()", "JSON.parse()", "Math.parseInt()", "join()"],
+        correct: "JSON.parse()"
     },
     {
-        q_text: "This will be the question prompt 2",
-        choices: ["choice 5", "choice 6", "choice 7", "choice 8"],
-        correct: "choice 6"
+        q_text: "Which element is NOT considered essential in the construction of an html file?",
+        choices: ["<!DOCTYPE>", "<head>", "<body>", "<header>"],
+        correct: "<header>"
+    },
+    {
+        q_text: "Which is NOT a JavaScript function that requires user interation?",
+        choices: ["confirm()", "prompt()", "alert()", "input()"],
+        correct: "input()"
+    },
+    {
+        q_text: "The CSS in a webpage is often associated to its ______",
+        choices: ["content", "animation", "appearance", "user-interface"],
+        correct: "appearance"
     }
 
 ]
 
+
+//Functions
 //----------------------------------------------------------------------------------
-
-
-
-// declare functions logically (chronological)! Will help visualize
-
-
-//------------------------------------------------------------------
 
 
 function time_start() {
@@ -181,6 +186,10 @@ function show_scores() {
 
 
 }
+
+
+//Event Listeners
+//----------------------------------------------------------------------------------
 
 
 // this starts off function chain
