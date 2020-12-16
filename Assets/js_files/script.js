@@ -3,6 +3,7 @@ var current_question = 0;
 var final_score;
 var user_input;
 var input_array = [];
+var stored_scores;
 
 var show_time = document.querySelector(".timer");
 var introEl = document.querySelector(".intro_page");
@@ -105,7 +106,7 @@ function hi_score_record() {
     submit.setAttribute("class", "submit_btn");
     inputEl.setAttribute("class", "user_input");
 
-    
+
     pEl.textContent = "Your final score is " + final_score;
     hi_scoreEl.appendChild(pEl);
 
@@ -133,17 +134,17 @@ function hi_score_record() {
 
         var user_entry = [user_input, final_score];
 
-        var stored_scores = JSON.parse(localStorage.getItem("hi_scores"));
+        stored_scores = localStorage.getItem("hi_scores");
         //if there's local storage, input array ==JSON.parse(localStorage.getItem("hi_scores"))
 
-        if (stored_scores !== null) {
-            input_array = stored_scores;
+        if (stored_scores > 0) {
+            input_array=JSON.parse(stored_scores);
         }
 
         input_array.push(user_entry);
         localStorage.setItem("hi_scores", JSON.stringify(input_array));
         show_scores();
-        
+
 
     })
 }
@@ -213,3 +214,16 @@ questionEl.addEventListener("click", function (event) {
     question_changer();
 
 });
+
+
+back_bttnEl.addEventListener("click", function (event) {
+    event.preventDefault();
+    tableEl.style.display = "none";
+    introEl.style.display = "block";
+})
+
+clear_bttnEl.addEventListener("click", function (event) {
+    event.preventDefault();
+    localStorage.clear();
+    show_scores;
+})
